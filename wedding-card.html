@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Akhilesh & Simran — Royal Wedding Invitation | 24 November 2026</title>
+  <meta name="description" content="Together with their families, Akhilesh and Simran cordially invite you to celebrate their wedding on 24 November 2026 at Valentine Motel & Resort, New Delhi." />
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪷</text></svg>" />
+
+  <!-- Google Fonts - Aamantran Theme 5 Reference -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Great+Vibes&family=Imperial+Script&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ruby: {
+              DEFAULT: '#962632',
+              dark: '#721B24',
+              light: '#B02C3B'
+            },
+            ivory: {
+              DEFAULT: '#F1EDE4',
+              light: '#FAF8F5',
+              dark: '#E6DFD3'
+            },
+            gold: {
+              DEFAULT: '#D4AF37',
+              light: '#F3E5AB',
+              dark: '#AA8822'
+            },
+            bronze: '#654123'
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            script: ['"Alex Brush"', '"Great Vibes"', 'cursive'],
+            calligraphy: ['"Imperial Script"', 'cursive'],
+            cinzel: ['"Cinzel"', 'serif'],
+            sans: ['"Montserrat"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Canvas Confetti CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      background-color: #F1EDE4;
+      color: #4D453D;
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #F1EDE4;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #962632;
+      border-radius: 4px;
+    }
+
+    /* Gold Shimmer Text Effect */
+    .gold-shimmer {
+      background: linear-gradient(135deg, #D4AF37 0%, #FFF3C4 35%, #D4AF37 60%, #AA8822 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 200% auto;
+      animation: shine 4s linear infinite;
+    }
+
+    @keyframes shine {
+      to { background-position: 200% center; }
+    }
+
+    /* Mughal Arch Shape */
+    .mughal-arch {
+      border-radius: 200px 200px 16px 16px;
+    }
+
+    /* Floating Petals Animation */
+    @keyframes floatPetal {
+      0% {
+        transform: translateY(-10px) rotate(0deg) translateX(0);
+        opacity: 0;
+      }
+      15% { opacity: 0.8; }
+      85% { opacity: 0.8; }
+      100% {
+        transform: translateY(105vh) rotate(360deg) translateX(50px);
+        opacity: 0;
+      }
+    }
+
+    .petal {
+      position: absolute;
+      pointer-events: none;
+      animation: floatPetal 10s linear infinite;
+    }
+
+    /* Equalizer Sound Waves */
+    @keyframes wave {
+      0%, 100% { height: 4px; }
+      50% { height: 18px; }
+    }
+    .sound-bar {
+      animation: wave 1.2s ease-in-out infinite;
+    }
+    .sound-bar:nth-child(2) { animation-delay: 0.2s; }
+    .sound-bar:nth-child(3) { animation-delay: 0.4s; }
+  </style>
+</head>
+<body class="bg-[#F1EDE4] text-[#4D453D] antialiased selection:bg-[#962632] selection:text-white relative overflow-x-hidden">
+
+  <!-- ==========================================
+       BACKGROUND AUDIO PLAYER (Indian Wedding Melody)
+       ========================================== -->
+  <audio id="wedding-audio" loop preload="auto">
+    <source src="./public/audio/wedding-melody.mp3" type="audio/mp3">
+    <source src="https://res.cloudinary.com/depixc8dq/video/upload/v1776881841/aamantran%20tracks%20assets/track_1_new_mijzcq.mp3" type="audio/mp3">
+  </audio>
+
+  <!-- Floating Music Toggle Button -->
+  <div class="fixed bottom-5 right-5 z-40">
+    <button id="music-btn" onclick="toggleAudio()" class="flex items-center space-x-2 bg-[#962632] hover:bg-[#721B24] text-[#FAF8F5] px-4 py-2.5 rounded-full shadow-2xl border border-[#D4AF37]/70 transition-all duration-300 transform hover:scale-105 active:scale-95">
+      <span id="music-icon" class="text-base">🎵</span>
+      <div id="sound-bars" class="hidden items-end space-x-[2px] h-3">
+        <span class="w-[3px] bg-[#D4AF37] rounded-full sound-bar"></span>
+        <span class="w-[3px] bg-[#D4AF37] rounded-full sound-bar"></span>
+        <span class="w-[3px] bg-[#D4AF37] rounded-full sound-bar"></span>
+      </div>
+      <span id="music-label" class="text-xs font-serif tracking-wider text-[#FAF8F5]">Play Music</span>
+    </button>
+  </div>
+
+  <!-- ==========================================
+       SECTION 1: OPENING ENVELOPE INVITATION SCREEN
+       ========================================== -->
+  <div id="envelope-overlay" class="fixed inset-0 z-50 flex items-center justify-center bg-[#1A0A0D]/85 backdrop-blur-md transition-opacity duration-1000">
+    <!-- Floating Petals -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none opacity-40">
+      <span class="petal text-[#D4AF37] text-lg" style="left: 10%; animation-delay: 0s;">🌸</span>
+      <span class="petal text-[#D4AF37] text-lg" style="left: 25%; animation-delay: 2s;">🌸</span>
+      <span class="petal text-[#D4AF37] text-lg" style="left: 45%; animation-delay: 4s;">🌸</span>
+      <span class="petal text-[#D4AF37] text-lg" style="left: 65%; animation-delay: 1s;">🌸</span>
+      <span class="petal text-[#D4AF37] text-lg" style="left: 85%; animation-delay: 3s;">🌸</span>
+    </div>
+
+    <div id="envelope-box" class="relative w-[92%] max-w-[440px] transition-all duration-1000 transform scale-100">
+      <div class="relative bg-[#F1EDE4] rounded-2xl shadow-2xl p-6 sm:p-8 text-center border-2 border-[#D4AF37]/50 overflow-hidden">
+        <div class="absolute top-0 left-0 right-0 h-3 bg-gradient-to-r from-[#721B24] via-[#962632] to-[#721B24]"></div>
+        
+        <!-- Auspicious Ganesha -->
+        <div class="flex flex-col items-center justify-center pt-2">
+          <svg class="w-14 h-14 text-[#962632]" viewBox="0 0 100 100" fill="currentColor">
+            <path d="M50 8 C40 8 32 16 32 26 C32 30 34 34 37 37 C34 40 32 45 32 50 C32 54 34 58 37 60 C32 64 28 70 28 78 C28 85 34 91 42 91 L58 91 C66 91 72 85 72 78 C72 70 68 64 63 60 C66 58 68 54 68 50 C68 45 66 40 63 37 C66 34 68 30 68 26 C68 16 60 8 50 8 Z" opacity="0.9" />
+          </svg>
+          <p class="font-serif text-xs tracking-[0.25em] text-[#962632] font-semibold mt-1">|| श्री गणेशाय नमः ||</p>
+        </div>
+
+        <p class="font-serif text-xs uppercase tracking-[0.3em] text-[#654123] mt-4">The Wedding Celebration of</p>
+        
+        <!-- Couple Names -->
+        <div class="py-2">
+          <h1 class="font-script text-4xl sm:text-5xl text-[#962632] leading-tight">Akhilesh</h1>
+          <div class="flex items-center justify-center my-1">
+            <span class="h-[1px] w-12 bg-[#D4AF37]/60"></span>
+            <span class="font-script text-2xl text-[#D4AF37] px-3">&</span>
+            <span class="h-[1px] w-12 bg-[#D4AF37]/60"></span>
+          </div>
+          <h1 class="font-script text-4xl sm:text-5xl text-[#962632] leading-tight">Simran</h1>
+        </div>
+
+        <div class="mt-2 text-xs font-serif tracking-widest text-[#654123] uppercase">
+          <p class="font-semibold text-[#962632] text-sm">24 November 2026</p>
+          <p class="mt-1 text-[11px] text-[#4D453D]">Valentine Motel & Resort, New Delhi</p>
+        </div>
+
+        <!-- Wax Seal Button -->
+        <div class="mt-6 flex flex-col items-center">
+          <button onclick="openInvitation()" class="group relative flex flex-col items-center focus:outline-none transition-transform hover:scale-105 active:scale-95">
+            <div class="relative w-20 h-20 rounded-full bg-gradient-to-br from-[#AA8822] via-[#D4AF37] to-[#7B1F2A] p-[3px] shadow-xl animate-pulse">
+              <div class="w-full h-full rounded-full bg-gradient-to-tr from-[#962632] to-[#721B24] flex items-center justify-center border border-[#F3E5AB]/40 shadow-inner">
+                <div class="text-center">
+                  <span class="font-script text-2xl text-[#F3E5AB] font-bold block leading-none">A & S</span>
+                  <span class="text-[9px] tracking-widest text-[#F3E5AB] uppercase block mt-1 font-serif">OPEN</span>
+                </div>
+              </div>
+            </div>
+            <span class="mt-3 font-serif text-xs uppercase tracking-[0.25em] text-[#962632] font-semibold group-hover:text-[#AA8822] transition-colors">
+              ✨ Tap to Open Invitation ✨
+            </span>
+          </button>
+        </div>
+
+        <div class="mt-4 pt-3 border-t border-[#D4AF37]/30 text-center">
+          <p class="text-[11px] font-serif text-[#654123] italic">
+            "Together with our families, we request the honor of your presence."
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       SECTION 2: HERO SECTION
+       ========================================== -->
+  <section class="relative min-h-[92vh] flex flex-col items-center justify-between pt-8 pb-10 px-4 bg-[#F1EDE4] overflow-hidden border-b border-[#D4AF37]/30">
+    <!-- Header Invocation -->
+    <div class="flex flex-col items-center text-center mt-2 z-10">
+      <div class="text-[#962632] text-3xl font-serif">🕉️</div>
+      <p class="font-serif text-sm tracking-[0.3em] text-[#962632] font-semibold mt-1">|| श्री गणेशाय नमः ||</p>
+      <p class="font-serif text-xs text-[#654123] tracking-widest uppercase mt-0.5">Shubh Vivah Invitation</p>
+    </div>
+
+    <!-- Main Arch Frame - Signature Theme 5 Ruby Arch -->
+    <div class="relative my-6 w-full max-w-lg z-10">
+      <div class="relative bg-[#962632] text-white mughal-arch p-8 sm:p-12 shadow-2xl border-4 border-[#D4AF37] text-center overflow-hidden">
+        <div class="absolute inset-2 border border-[#D4AF37]/40 mughal-arch pointer-events-none"></div>
+
+        <div class="inline-block px-4 py-1 rounded-full bg-[#721B24] border border-[#D4AF37]/50 mb-3 shadow">
+          <span class="font-serif text-[11px] uppercase tracking-[0.25em] text-[#F3E5AB]">Save Our Date</span>
+        </div>
+
+        <p class="font-serif text-sm text-[#F1EDE4] tracking-widest uppercase mb-2">We are getting married</p>
+
+        <!-- Couple Names -->
+        <div class="py-2">
+          <h1 class="font-script text-5xl sm:text-7xl text-[#FAF8F5] gold-shimmer leading-tight tracking-wide">Akhilesh</h1>
+          <div class="flex items-center justify-center my-2">
+            <span class="h-[1px] w-16 bg-[#D4AF37]/70"></span>
+            <span class="font-script text-3xl sm:text-4xl text-[#F3E5AB] px-4 font-normal">&</span>
+            <span class="h-[1px] w-16 bg-[#D4AF37]/70"></span>
+          </div>
+          <h1 class="font-script text-5xl sm:text-7xl text-[#FAF8F5] gold-shimmer leading-tight tracking-wide">Simran</h1>
+        </div>
+
+        <!-- Date & Location -->
+        <div class="mt-5 pt-4 border-t border-[#D4AF37]/40 flex flex-col items-center space-y-2">
+          <p class="font-serif text-base sm:text-lg tracking-wider font-medium text-[#F3E5AB]">
+            📅 Tuesday, 24 November 2026
+          </p>
+          <p class="font-serif tracking-wide text-xs sm:text-sm text-[#FAF8F5]/90">
+            📍 Valentine Motel & Resort, New Delhi
+          </p>
+        </div>
+
+        <div class="mt-4">
+          <span class="font-sans text-xs tracking-[0.3em] uppercase text-[#F3E5AB]/90 font-medium">#AkhileshWedsSimran</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <a href="#invitation-section" class="flex flex-col items-center z-10 cursor-pointer group">
+      <span class="font-serif text-xs uppercase tracking-[0.25em] text-[#654123] group-hover:text-[#962632] transition-colors">Scroll to Explore</span>
+      <span class="text-lg text-[#962632] animate-bounce mt-1">↓</span>
+    </a>
+  </section>
+
+  <!-- ==========================================
+       SECTION 3: INVITATION LETTER
+       ========================================== -->
+  <section id="invitation-section" class="py-16 px-4 bg-[#FAF8F5] relative overflow-hidden">
+    <div class="max-w-2xl mx-auto relative z-10">
+      <div class="bg-[#F1EDE4] rounded-2xl shadow-xl border-2 border-[#D4AF37]/50 p-6 sm:p-12 text-center relative">
+        <div class="absolute inset-3 border border-[#962632]/20 rounded-xl pointer-events-none"></div>
+
+        <!-- Sanskrit Shloka -->
+        <div class="mb-6">
+          <p class="font-serif text-sm sm:text-base text-[#962632] font-semibold leading-relaxed">
+            वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ।<br />
+            निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा॥
+          </p>
+          <p class="font-serif text-xs text-[#654123] tracking-widest uppercase mt-2">ॐ श्री गणेशाय नमः</p>
+        </div>
+
+        <div class="flex items-center justify-center my-6 space-x-3">
+          <div class="h-[1px] flex-1 bg-gradient-to-r from-transparent to-[#962632]"></div>
+          <span class="font-serif text-sm tracking-[0.25em] uppercase text-[#654123] font-medium px-2">INVITATION</span>
+          <div class="h-[1px] flex-1 bg-gradient-to-l from-transparent to-[#962632]"></div>
+        </div>
+
+        <div class="my-6 space-y-4 text-[#4D453D] font-serif text-base sm:text-lg leading-relaxed">
+          <p class="italic text-[#654123]">With the divine blessings of our ancestors and almighty God,</p>
+          <p class="text-sm uppercase tracking-widest text-[#962632] font-semibold">The Yadav Families</p>
+          <p>cordially invite you and your family to celebrate the auspicious wedding ceremony of their beloved children</p>
+
+          <!-- Groom & Bride Details -->
+          <div class="py-4 space-y-6">
+            <div class="bg-white/60 p-4 rounded-xl border border-[#D4AF37]/40 shadow-sm">
+              <h3 class="font-script text-3xl sm:text-4xl text-[#962632]">Akhilesh Yadav</h3>
+              <p class="text-xs sm:text-sm text-[#654123] font-medium tracking-wide mt-1">
+                Son of <span class="font-semibold text-[#4D453D]">Mr. Shyam Sundar Yadav & Mrs. Madhuri Devi</span>
+              </p>
+            </div>
+
+            <div class="font-script text-2xl text-[#D4AF37]">with</div>
+
+            <div class="bg-white/60 p-4 rounded-xl border border-[#D4AF37]/40 shadow-sm">
+              <h3 class="font-script text-3xl sm:text-4xl text-[#962632]">Simran Yadav</h3>
+              <p class="text-xs sm:text-sm text-[#654123] font-medium tracking-wide mt-1">
+                Daughter of <span class="font-semibold text-[#4D453D]">Mr. Dinesh Kumar Yadav & Mrs. Madhuri Yadav</span>
+              </p>
+            </div>
+          </div>
+
+          <p class="pt-2 text-sm sm:text-base">
+            Please join us to bestow your hearty blessings and auspicious wishes upon the newlyweds as they begin their sacred journey together.
+          </p>
+        </div>
+
+        <div class="mt-6 text-center">
+          <p class="font-serif text-xs uppercase tracking-[0.2em] text-[#654123]">Awaiting your gracious presence</p>
+          <p class="font-serif text-base font-bold text-[#962632] mt-1">Yadav Family & Relatives</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SECTION 4: COUPLE INTRODUCTION
+       ========================================== -->
+  <section class="py-20 px-4 bg-[#F1EDE4] relative border-b border-[#D4AF37]/30">
+    <div class="max-w-5xl mx-auto text-center relative z-10">
+      <p class="font-serif text-xs uppercase tracking-[0.3em] text-[#654123] font-medium">Soulmates for Life</p>
+      <h2 class="font-script text-4xl sm:text-6xl text-[#962632] mt-1 mb-2">The Bride & Groom</h2>
+      
+      <div class="flex items-center justify-center my-4 space-x-3 max-w-md mx-auto">
+        <div class="h-[1px] flex-1 bg-gradient-to-r from-transparent to-[#962632]"></div>
+        <span class="text-[#D4AF37]">🪷</span>
+        <div class="h-[1px] flex-1 bg-gradient-to-l from-transparent to-[#962632]"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-14 mt-12 items-stretch">
+        <!-- Groom Card -->
+        <div class="relative bg-[#FAF8F5] rounded-3xl p-6 sm:p-8 shadow-xl border-2 border-[#D4AF37]/50 flex flex-col items-center">
+          <div class="absolute -top-4 bg-[#962632] text-[#F3E5AB] px-5 py-1 rounded-full text-xs font-serif tracking-[0.2em] uppercase border border-[#D4AF37] shadow">
+            The Groom
+          </div>
+          <div class="relative w-48 h-64 sm:w-56 sm:h-72 mt-4 mughal-arch p-2 bg-gradient-to-b from-[#D4AF37] via-[#962632] to-[#721B24] shadow-lg overflow-hidden">
+            <div class="w-full h-full mughal-arch overflow-hidden bg-white">
+              <img src="./images/groom.jpg" alt="Akhilesh" class="w-full h-full object-cover object-top" onerror="if (this.src.indexOf('public') === -1) { this.src='./public/images/groom.jpg'; } else { this.src='https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&q=80'; }">
+            </div>
+          </div>
+          <div class="mt-6 text-center">
+            <h3 class="font-script text-4xl text-[#962632]">Akhilesh</h3>
+            <p class="font-serif text-sm tracking-widest uppercase text-[#AA8822] font-semibold mt-1">Akhilesh Yadav</p>
+            <div class="my-3 px-4 py-2 bg-[#F1EDE4] rounded-lg border border-[#D4AF37]/30 text-xs sm:text-sm text-[#4D453D]">
+              <p class="text-[#654123] font-medium">Son of</p>
+              <p class="font-semibold text-[#962632] mt-0.5">Mr. Shyam Sundar Yadav & Mrs. Madhuri Devi</p>
+            </div>
+            <p class="font-serif text-xs sm:text-sm text-[#4D453D] italic mt-3 max-w-xs leading-relaxed">
+              "Blessed to embark on this beautiful journey of love and togetherness with his soulmate, Simran."
+            </p>
+          </div>
+        </div>
+
+        <!-- Bride Card -->
+        <div class="relative bg-[#FAF8F5] rounded-3xl p-6 sm:p-8 shadow-xl border-2 border-[#D4AF37]/50 flex flex-col items-center">
+          <div class="absolute -top-4 bg-[#962632] text-[#F3E5AB] px-5 py-1 rounded-full text-xs font-serif tracking-[0.2em] uppercase border border-[#D4AF37] shadow">
+            The Bride
+          </div>
+          <div class="relative w-48 h-64 sm:w-56 sm:h-72 mt-4 mughal-arch p-2 bg-gradient-to-b from-[#D4AF37] via-[#962632] to-[#721B24] shadow-lg overflow-hidden">
+            <div class="w-full h-full mughal-arch overflow-hidden bg-white">
+              <img src="./images/bride.jpg" alt="Simran" class="w-full h-full object-cover object-top" onerror="if (this.src.indexOf('public') === -1) { this.src='./public/images/bride.jpg'; } else { this.src='https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=600&q=80'; }">
+            </div>
+          </div>
+          <div class="mt-6 text-center">
+            <h3 class="font-script text-4xl text-[#962632]">Simran</h3>
+            <p class="font-serif text-sm tracking-widest uppercase text-[#AA8822] font-semibold mt-1">Simran Yadav</p>
+            <div class="my-3 px-4 py-2 bg-[#F1EDE4] rounded-lg border border-[#D4AF37]/30 text-xs sm:text-sm text-[#4D453D]">
+              <p class="text-[#654123] font-medium">Daughter of</p>
+              <p class="font-semibold text-[#962632] mt-0.5">Mr. Dinesh Kumar Yadav & Mrs. Madhuri Yadav</p>
+            </div>
+            <p class="font-serif text-xs sm:text-sm text-[#4D453D] italic mt-3 max-w-xs leading-relaxed">
+              "Ready to step into a new chapter filled with laughter, love, and sacred promises with Akhilesh."
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SECTION 5: LIVE COUNTDOWN TIMER
+       ========================================== -->
+  <section class="py-16 px-4 bg-[#962632] text-white relative overflow-hidden">
+    <div class="max-w-4xl mx-auto text-center relative z-10">
+      <p class="font-serif text-xs uppercase tracking-[0.3em] font-semibold text-[#F3E5AB] mb-2">
+        ⏳ Counting Down To The Big Day
+      </p>
+      <h2 class="font-script text-4xl sm:text-6xl text-[#FAF8F5] gold-shimmer mb-3">
+        The Auspicious Moment
+      </h2>
+      <p class="font-serif text-sm sm:text-base text-[#F1EDE4] max-w-md mx-auto">
+        24 November 2026 • 7:00 PM IST • New Delhi
+      </p>
+
+      <!-- Countdown Numbers Grid -->
+      <div class="grid grid-cols-4 gap-2 sm:gap-6 max-w-xl mx-auto my-10">
+        <div class="flex flex-col items-center p-3 sm:p-5 bg-[#FAF8F5] text-[#962632] rounded-2xl shadow-xl border-2 border-[#D4AF37]">
+          <span id="days" class="font-serif text-2xl sm:text-5xl font-bold tracking-tight">--</span>
+          <span class="font-sans text-[10px] sm:text-xs uppercase tracking-widest text-[#654123] font-semibold mt-1">Days</span>
+        </div>
+        <div class="flex flex-col items-center p-3 sm:p-5 bg-[#FAF8F5] text-[#962632] rounded-2xl shadow-xl border-2 border-[#D4AF37]">
+          <span id="hours" class="font-serif text-2xl sm:text-5xl font-bold tracking-tight">--</span>
+          <span class="font-sans text-[10px] sm:text-xs uppercase tracking-widest text-[#654123] font-semibold mt-1">Hours</span>
+        </div>
+        <div class="flex flex-col items-center p-3 sm:p-5 bg-[#FAF8F5] text-[#962632] rounded-2xl shadow-xl border-2 border-[#D4AF37]">
+          <span id="minutes" class="font-serif text-2xl sm:text-5xl font-bold tracking-tight">--</span>
+          <span class="font-sans text-[10px] sm:text-xs uppercase tracking-widest text-[#654123] font-semibold mt-1">Mins</span>
+        </div>
+        <div class="flex flex-col items-center p-3 sm:p-5 bg-[#FAF8F5] text-[#962632] rounded-2xl shadow-xl border-2 border-[#D4AF37]">
+          <span id="seconds" class="font-serif text-2xl sm:text-5xl font-bold tracking-tight text-[#B02C3B]">--</span>
+          <span class="font-sans text-[10px] sm:text-xs uppercase tracking-widest text-[#654123] font-semibold mt-1">Secs</span>
+        </div>
+      </div>
+
+      <!-- Add to Calendar Button -->
+      <div class="flex justify-center">
+        <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Akhilesh+%26+Simran+Wedding+(Shubh+Vivah)&dates=20261124T133000Z/20261125T023000Z&details=You+are+cordially+invited+to+celebrate+the+wedding+of+Akhilesh+%26+Simran.&location=Valentine+Hotel+%26+Resorts,+Grand+Trunk+Rd,+Nangli+Puna,+New+Delhi,+Delhi+110036" target="_blank" rel="noopener noreferrer" class="inline-flex items-center space-x-2 px-6 py-3 rounded-full bg-[#FAF8F5] text-[#962632] hover:bg-[#F3E5AB] transition-colors font-serif text-sm tracking-wider font-semibold border border-[#D4AF37] shadow-lg transform hover:scale-105">
+          <span>📅 Add To Google Calendar</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SECTION 6: WEDDING EVENTS (Haldi, Mehendi, Wedding)
+       ========================================== -->
+  <section id="events-section" class="py-20 px-4 bg-[#F1EDE4] relative overflow-hidden">
+    <div class="max-w-6xl mx-auto relative z-10 text-center">
+      <p class="font-serif text-xs uppercase tracking-[0.3em] text-[#654123] font-medium">Auspicious Celebrations</p>
+      <h2 class="font-script text-4xl sm:text-6xl text-[#962632] mt-1 mb-2">Wedding Events</h2>
+      
+      <div class="flex items-center justify-center my-4 space-x-3 max-w-md mx-auto">
+        <div class="h-[1px] flex-1 bg-gradient-to-r from-transparent to-[#962632]"></div>
+        <span class="text-[#D4AF37]">🪷</span>
+        <div class="h-[1px] flex-1 bg-gradient-to-l from-transparent to-[#962632]"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch text-left mt-12">
+        <!-- Event 1: Haldi -->
+        <div class="relative bg-[#FAF8F5] rounded-3xl p-6 sm:p-8 shadow-xl border-2 border-[#E0A922] flex flex-col justify-between transition-all hover:-translate-y-1">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-2xl">☀️</span>
+              <span class="text-[11px] font-serif uppercase tracking-[0.2em] px-3 py-1 rounded-full border bg-[#FFF8E7] text-[#9A6B00] border-[#E0A922] font-bold">हल्दी रस्म</span>
+            </div>
+            <h3 class="font-script text-3xl sm:text-4xl text-[#962632]">Haldi Ceremony</h3>
+            <div class="mt-4 space-y-2 text-sm text-[#4D453D] font-serif">
+              <p class="font-semibold text-[#962632]">📅 Monday, 23 November 2026</p>
+              <p class="text-[#654123]">⏰ 3:00 PM IST</p>
+            </div>
+            <div class="mt-4 pt-4 border-t border-[#D4AF37]/30 text-xs sm:text-sm text-[#4D453D]">
+              <p class="font-bold text-[#962632]">📍 Home</p>
+              <p class="text-xs text-[#654123] mt-0.5 leading-relaxed">Home town, Madya, Khalilabad, Sant Kabir Nagar, UP 272175</p>
+            </div>
+            <p class="mt-4 text-xs sm:text-sm text-[#4D453D] italic">
+              "A splash of turmeric, laughter, and sunshine as we bless the couple in auspicious yellow hues."
+            </p>
+          </div>
+          <div class="mt-6 pt-2">
+            <a href="https://www.google.com/maps/search/?api=1&query=Madya+Khalilabad+Sant+Kabir+Nagar+UP+272175" target="_blank" class="w-full inline-flex items-center justify-center space-x-2 py-2.5 px-4 rounded-xl bg-[#962632] hover:bg-[#721B24] text-white font-serif text-xs tracking-wider uppercase font-semibold transition-colors shadow">
+              <span>View On Google Maps ↗</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Event 2: Mehendi -->
+        <div class="relative bg-[#FAF8F5] rounded-3xl p-6 sm:p-8 shadow-xl border-2 border-[#2D6A4F] flex flex-col justify-between transition-all hover:-translate-y-1">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-2xl">✨</span>
+              <span class="text-[11px] font-serif uppercase tracking-[0.2em] px-3 py-1 rounded-full border bg-[#EBF7F0] text-[#1B4332] border-[#2D6A4F] font-bold">मेहंदी उत्सव</span>
+            </div>
+            <h3 class="font-script text-3xl sm:text-4xl text-[#962632]">Mehendi Ceremony</h3>
+            <div class="mt-4 space-y-2 text-sm text-[#4D453D] font-serif">
+              <p class="font-semibold text-[#962632]">📅 Monday, 23 November 2026</p>
+              <p class="text-[#654123]">⏰ 6:30 PM IST</p>
+            </div>
+            <div class="mt-4 pt-4 border-t border-[#D4AF37]/30 text-xs sm:text-sm text-[#4D453D]">
+              <p class="font-bold text-[#962632]">📍 Home</p>
+              <p class="text-xs text-[#654123] mt-0.5 leading-relaxed">Home town, Madya, Khalilabad, Sant Kabir Nagar, UP 272175</p>
+            </div>
+            <p class="mt-4 text-xs sm:text-sm text-[#4D453D] italic">
+              "Intricate henna designs, soulful music, and joyous beats of dholak welcoming love."
+            </p>
+          </div>
+          <div class="mt-6 pt-2">
+            <a href="https://www.google.com/maps/search/?api=1&query=Madya+Khalilabad+Sant+Kabir+Nagar+UP+272175" target="_blank" class="w-full inline-flex items-center justify-center space-x-2 py-2.5 px-4 rounded-xl bg-[#962632] hover:bg-[#721B24] text-white font-serif text-xs tracking-wider uppercase font-semibold transition-colors shadow">
+              <span>View On Google Maps ↗</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Event 3: Wedding Ceremony -->
+        <div class="relative bg-[#FAF8F5] rounded-3xl p-6 sm:p-8 shadow-xl border-2 border-[#962632] flex flex-col justify-between transition-all hover:-translate-y-1">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-2xl">❤️</span>
+              <span class="text-[11px] font-serif uppercase tracking-[0.2em] px-3 py-1 rounded-full border bg-[#FDF2F3] text-[#962632] border-[#962632] font-bold">शुभ विवाह</span>
+            </div>
+            <h3 class="font-script text-3xl sm:text-4xl text-[#962632]">Wedding Ceremony</h3>
+            <div class="mt-4 space-y-2 text-sm text-[#4D453D] font-serif">
+              <p class="font-semibold text-[#962632]">📅 Tuesday, 24 November 2026</p>
+              <p class="text-[#654123]">⏰ 7:00 PM IST onwards</p>
+            </div>
+            <div class="mt-4 pt-4 border-t border-[#D4AF37]/30 text-xs sm:text-sm text-[#4D453D]">
+              <p class="font-bold text-[#962632]">📍 Valentine Motel & Resort</p>
+              <p class="text-xs text-[#654123] mt-0.5 leading-relaxed">Grand Trunk Rd, opposite Siraspur Gurudwara, Nangli Puna, New Delhi 110036</p>
+            </div>
+            <p class="mt-4 text-xs sm:text-sm text-[#4D453D] italic">
+              "The sacred saat phere around the holy fire, uniting two souls and families forever in divine harmony."
+            </p>
+          </div>
+          <div class="mt-6 pt-2">
+            <a href="https://www.google.com/maps/place/Valentine+Hotel+%26+Resorts/@28.7650767,77.1460906,17z/" target="_blank" class="w-full inline-flex items-center justify-center space-x-2 py-2.5 px-4 rounded-xl bg-[#962632] hover:bg-[#721B24] text-white font-serif text-xs tracking-wider uppercase font-semibold transition-colors shadow">
+              <span>View On Google Maps ↗</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SECTION 7: VENUE & GOOGLE MAPS DIRECTIONS
+       ========================================== -->
+  <section id="venue-section" class="py-20 px-4 bg-[#FAF8F5] relative overflow-hidden border-b border-[#D4AF37]/30">
+    <div class="max-w-5xl mx-auto text-center relative z-10">
+      <p class="font-serif text-xs uppercase tracking-[0.3em] text-[#654123] font-medium">Destination & Directions</p>
+      <h2 class="font-script text-4xl sm:text-6xl text-[#962632] mt-1 mb-2">The Wedding Venue</h2>
+      
+      <div class="flex items-center justify-center my-4 space-x-3 max-w-md mx-auto">
+        <div class="h-[1px] flex-1 bg-gradient-to-r from-transparent to-[#962632]"></div>
+        <span class="text-[#D4AF37]">🪷</span>
+        <div class="h-[1px] flex-1 bg-gradient-to-l from-transparent to-[#962632]"></div>
+      </div>
+
+      <div class="bg-[#F1EDE4] rounded-3xl p-6 sm:p-10 shadow-2xl border-2 border-[#D4AF37]/60 text-left mt-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-5 space-y-5">
+            <div class="inline-block px-4 py-1 rounded-full bg-[#962632] text-[#F3E5AB] text-xs font-serif uppercase tracking-[0.2em] font-semibold border border-[#D4AF37]">
+              Main Wedding Venue
+            </div>
+            <h3 class="font-script text-3xl sm:text-5xl text-[#962632] leading-tight">Valentine Motel & Resort</h3>
+            <p class="text-sm text-[#4D453D] font-serif leading-relaxed">
+              Grand Trunk Rd, opposite Siraspur Gurudwara, Nangli Puna, New Delhi, Delhi 110036
+            </p>
+            <div class="p-4 bg-white/70 rounded-xl border border-[#D4AF37]/40 space-y-2 text-xs sm:text-sm font-serif">
+              <p class="font-semibold text-[#962632]">📍 Prominent Landmarks:</p>
+              <ul class="list-disc list-inside text-[#654123] space-y-1">
+                <li>Opposite Siraspur Gurudwara</li>
+                <li>Grand Trunk Rd, Nangli Puna</li>
+                <li>Accessible via NH44 (GT Karnal Road)</li>
+              </ul>
+            </div>
+            <div class="pt-2">
+              <a href="https://www.google.com/maps/place/Valentine+Hotel+%26+Resorts/@28.7650767,77.1460906,17z/" target="_blank" class="inline-flex items-center space-x-2 px-6 py-3 rounded-full bg-[#962632] hover:bg-[#721B24] text-white font-serif text-sm tracking-wider uppercase font-semibold shadow-lg">
+                <span>🧭 Get Driving Directions</span>
+              </a>
+            </div>
+          </div>
+          <div class="lg:col-span-7">
+            <div class="relative w-full h-[320px] sm:h-[380px] rounded-2xl overflow-hidden shadow-inner border-2 border-[#D4AF37]/60 bg-white">
+              <iframe title="Venue Map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3497.643336712349!2d77.1460906!3d28.7650767!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d01ee3daaaaa9%3A0xe67cb566cf2c7eb7!2sValentine%20Hotel%20%26%20Resorts!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" class="w-full h-full border-0" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- ==========================================
+       SECTION 10: CLOSING SECTION
+       ========================================== -->
+  <footer class="relative bg-[#721B24] text-white pt-16 pb-12 px-4 overflow-hidden border-t-4 border-[#D4AF37]">
+    <div class="max-w-3xl mx-auto text-center relative z-10">
+      <div class="text-[#D4AF37] text-3xl mb-3">🕉️</div>
+      <p class="font-serif text-xs uppercase tracking-[0.3em] text-[#F3E5AB] font-semibold">Warm Regards & Best Compliments</p>
+      
+      <div class="my-6 space-y-3">
+        <h2 class="font-script text-4xl sm:text-6xl text-[#FAF8F5] gold-shimmer">
+          We Look Forward To Welcoming You!
+        </h2>
+        <p class="font-serif text-sm sm:text-base text-[#F1EDE4] max-w-lg mx-auto italic leading-relaxed">
+          "Your presence, prayers, and heartfelt blessings will illuminate our new journey of love, friendship, and togetherness."
+        </p>
+      </div>
+
+      <div class="my-8 grid grid-cols-1 sm:grid-cols-2 gap-6 text-center max-w-xl mx-auto font-serif">
+        <div class="bg-black/20 p-4 rounded-2xl border border-[#D4AF37]/30">
+          <p class="text-xs uppercase tracking-widest text-[#F3E5AB] font-semibold">Groom's Parents</p>
+          <p class="text-sm sm:text-base text-white font-medium mt-1">Mr. Shyam Sundar Yadav & Mrs. Madhuri Devi</p>
+        </div>
+        <div class="bg-black/20 p-4 rounded-2xl border border-[#D4AF37]/30">
+          <p class="text-xs uppercase tracking-widest text-[#F3E5AB] font-semibold">Bride's Parents</p>
+          <p class="text-sm sm:text-base text-white font-medium mt-1">Mr. Dinesh Kumar Yadav & Mrs. Madhuri Yadav</p>
+        </div>
+      </div>
+
+      <div class="pt-4 pb-2">
+        <p class="font-script text-4xl sm:text-5xl text-[#F3E5AB]">Akhilesh & Simran</p>
+        <p class="font-serif text-xs uppercase tracking-[0.3em] text-[#F1EDE4] mt-2">24 November 2026 • New Delhi</p>
+      </div>
+
+      <div class="mt-8 flex justify-center">
+        <button onclick="window.scrollTo({top:0, behavior:'smooth'})" class="px-5 py-2.5 rounded-full bg-white/10 hover:bg-white/20 border border-[#D4AF37]/50 text-xs font-serif uppercase tracking-widest text-[#F3E5AB]">
+          Back to Top ↑
+        </button>
+      </div>
+
+      <div class="mt-8 pt-6 border-t border-white/10 text-center text-[11px] font-sans text-[#F1EDE4]/60">
+        <p>Made with love for Akhilesh & Simran • Inspired by Aamantran Theme 5</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================
+       SCRIPTS FOR INTERACTION & COUNTDOWN
+       ========================================== -->
+  <script>
+    // 1. Audio Controller
+    const audio = document.getElementById('wedding-audio');
+    let isPlaying = false;
+
+    function toggleAudio() {
+      if (isPlaying) {
+        audio.pause();
+        isPlaying = false;
+        document.getElementById('music-icon').textContent = '🔇';
+        document.getElementById('music-label').textContent = 'Play Music';
+        document.getElementById('sound-bars').classList.add('hidden');
+        document.getElementById('sound-bars').classList.remove('flex');
+      } else {
+        audio.play().then(() => {
+          isPlaying = true;
+          document.getElementById('music-icon').textContent = '🎵';
+          document.getElementById('music-label').textContent = 'Music Playing';
+          document.getElementById('sound-bars').classList.remove('hidden');
+          document.getElementById('sound-bars').classList.add('flex');
+        }).catch(e => console.warn('Audio play prevented', e));
+      }
+    }
+
+    // 2. Open Invitation
+    function openInvitation() {
+      const overlay = document.getElementById('envelope-overlay');
+      const box = document.getElementById('envelope-box');
+
+      // Trigger Confetti
+      if (window.confetti) {
+        confetti({
+          particleCount: 90,
+          spread: 75,
+          origin: { y: 0.6 },
+          colors: ['#D4AF37', '#962632', '#F1EDE4', '#AA8822']
+        });
+      }
+
+      // Start Audio
+      toggleAudio();
+
+      box.classList.add('scale-110', 'opacity-0');
+      overlay.classList.add('opacity-0', 'pointer-events-none');
+      setTimeout(() => {
+        overlay.style.display = 'none';
+      }, 1000);
+    }
+
+    // 3. Live Countdown
+    function updateCountdown() {
+      const target = new Date("2026-11-24T19:00:00+05:30").getTime();
+      const now = new Date().getTime();
+      const diff = target - now;
+
+      if (diff <= 0) {
+        document.getElementById('days').textContent = '00';
+        document.getElementById('hours').textContent = '00';
+        document.getElementById('minutes').textContent = '00';
+        document.getElementById('seconds').textContent = '00';
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+      document.getElementById('days').textContent = String(days).padStart(2, '0');
+      document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+      document.getElementById('minutes').textContent = String(mins).padStart(2, '0');
+      document.getElementById('seconds').textContent = String(secs).padStart(2, '0');
+    }
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+  </script>
+</body>
+</html>
