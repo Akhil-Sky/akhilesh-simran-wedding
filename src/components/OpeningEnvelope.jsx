@@ -105,7 +105,7 @@ export const OpeningEnvelope = ({ onOpen, weddingData }) => {
           {/* Date & Location Snapshot */}
           <div className="mt-2 text-xs font-serif tracking-widest text-[#654123] uppercase">
             <p className="font-semibold text-[#962632] text-sm">24 November 2026</p>
-            <p className="mt-1 text-[11px] text-[#4D453D]">Valentine Motel & Resort, New Delhi</p>
+            <p className="mt-1 text-[11px] text-[#4D453D]">Valentine Hotel & Resort, New Delhi</p>
           </div>
 
           {/* Wax Seal / Tap to Open Button */}

@@ -78,7 +78,7 @@ export const VenueSection = ({ mainVenue }) => {
             <div className="lg:col-span-7">
               <div className="relative w-full h-[320px] sm:h-[380px] rounded-2xl overflow-hidden shadow-inner border-2 border-[#D4AF37]/60 bg-white">
                 <iframe
-                  title="Valentine Motel & Resort Map"
+                  title="Valentine Hotel & Resort Map"
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3497.643336712349!2d77.1460906!3d28.7650767!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d01ee3daaaaa9%3A0xe67cb566cf2c7eb7!2sValentine%20Hotel%20%26%20Resorts!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
                   className="w-full h-full border-0"
                   allowFullScreen=""

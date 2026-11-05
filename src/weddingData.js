@@ -23,7 +23,7 @@ export const weddingData = {
   hashtag: "#AkhileshWedsSimran",
 
   mainVenue: {
-    name: "Valentine Motel & Resort",
+    name: "Valentine Hotel & Resort",
     address: "Grand Trunk Rd, opposite Siraspur Gurudwara, Nangli Puna, New Delhi, Delhi 110036",
     mapsUrl: "https://www.google.com/maps/place/Valentine+Hotel+%26+Resorts/@28.7650767,77.1460906,17z/",
     embedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3497.643336712349!2d77.1460906!3d28.7650767!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d01ee3daaaaa9%3A0xe67cb566cf2c7eb7!2sValentine%20Hotel%20%26%20Resorts!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
@@ -62,7 +62,7 @@ export const weddingData = {
       hindiTitle: "शुभ विवाह",
       date: "Tuesday, 24 November 2026",
       time: "7:00 PM IST onwards",
-      venueName: "Valentine Motel & Resort",
+      venueName: "Valentine Hotel & Resort",
       address: "Grand Trunk Rd, opposite Siraspur Gurudwara, Nangli Puna, New Delhi, Delhi 110036",
       mapsUrl: "https://www.google.com/maps/place/Valentine+Hotel+%26+Resorts/@28.7650767,77.1460906,17z/",
       description: "The sacred saat phere around the holy fire, uniting two souls and families forever in divine harmony.",

@@ -39,8 +39,8 @@ export const CountdownSection = ({ targetDate, weddingData }) => {
   // Google Calendar event URL
   const generateGoogleCalendarUrl = () => {
     const title = encodeURIComponent("Akhilesh & Simran Wedding (Shubh Vivah)");
-    const details = encodeURIComponent("You are cordially invited to celebrate the wedding ceremony of Akhilesh and Simran at Valentine Motel & Resort, New Delhi.");
-    const location = encodeURIComponent("Valentine Motel & Resort, Grand Trunk Rd, Nangli Puna, New Delhi, Delhi 110036");
+    const details = encodeURIComponent("You are cordially invited to celebrate the wedding ceremony of Akhilesh and Simran at Valentine Hotel & Resort, New Delhi.");
+    const location = encodeURIComponent("Valentine Hotel & Resort, Grand Trunk Rd, Nangli Puna, New Delhi, Delhi 110036");
     // 24 Nov 2026 19:00 IST = 24 Nov 2026 13:30 UTC
     const dates = "20261124T133000Z/20261125T023000Z";
     return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${dates}&details=${details}&location=${location}`;
